@@ -1,5 +1,5 @@
 require('dotenv').config()
-const User = require('../models/userlogin');
+const user = require('../models/userlogin');
 const twj = require('jsonwebtoken')
 
 const createToken = (id) => {
@@ -9,8 +9,8 @@ const createToken = (id) => {
 const signup_user = async (req, res) => {
     const { email, password } = req.body
     try {
-        const user = await User.signup(email, password)
-        const token = createToken(user._id)
+        const User = await user.signup(email, password)
+        const token = createToken(User._id)
 
         res.status(200).json({ email, token })
     } catch (err) {
@@ -22,8 +22,8 @@ const login_user = async (req, res) => {
     const { email, password } = req.body
 
     try {
-        const user = await User.login(email, password)
-        const token = createToken(user._id)
+        const User = await user.login(email, password)
+        const token = createToken(User._id)
 
         res.status(200).json({ email, token })
     } catch (err) {

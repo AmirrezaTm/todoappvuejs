@@ -4,7 +4,6 @@ const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
-const routerBook = require('./routes/routeWorkout')
 const routeUser = require('./routes/routeUser')
 
 app.use(express.json())
@@ -19,7 +18,6 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/api/', routerBook)
 app.use('/api/', routeUser)
 
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })

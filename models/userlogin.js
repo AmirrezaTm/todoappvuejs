@@ -14,7 +14,7 @@ const userlogin = new Schema({
         type: String,
         required: true
     }
-}, { collection: 'user' })
+})
 
 userlogin.statics.signup = async function (email, password) {
 
@@ -64,4 +64,4 @@ userlogin.statics.login = async function (email, password) {
 
 }
 
-module.exports = mongoose.model('User', userlogin)
+module.exports = mongoose.model('user', userlogin)
