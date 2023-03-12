@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const routeUser = require('./routes/routeUser')
@@ -8,6 +9,7 @@ const routeUser = require('./routes/routeUser')
 app.use(express.json())
 mongoose.set('strictQuery', false);
 app.use(morgan('dev'))
+app.use(cors());
 
 app.use((req, res, next) => {
   console.log('host name:', req.hostname);
