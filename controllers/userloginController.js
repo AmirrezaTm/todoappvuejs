@@ -3,7 +3,7 @@ const user = require('../models/userlogin');
 const twj = require('jsonwebtoken')
 
 const createToken = (id) => {
-    return twj.sign({ id }, process.TOKEN, { expiresIn: '3d' })
+    return twj.sign({ id }, process.env.TOKEN, { expiresIn: '3d' })
 }
 
 const signup_user = async (req, res) => {

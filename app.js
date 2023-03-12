@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express')
 const app = express()
+const cors = require('cors')
 const mongoose = require('mongoose')
 const morgan = require('morgan')
 const routeUser = require('./routes/routeUser')
@@ -19,17 +20,12 @@ app.use((req, res, next) => {
 
 app.use('/api/', routeUser)
 
-mongoose.connect(process.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useCreateIndex: true,
-  useFindAndModify: false,
-})
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('connected to database')
     // listen to port
-    app.listen(process.PORT, () => {
-      console.log('listening for requests on port', process.PORT)
+    app.listen(process.env.PORT, () => {
+      console.log('listening for requests on port', process.env.PORT)
     })
   })
   .catch((err) => {
