@@ -19,15 +19,14 @@ app.use((req, res, next) => {
 
 app.use('/api/', routeUser)
 
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect("mongodb+srv://amirrezatm86:Amir.11228@cluster0.e3vfz2o.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('connected to database')
     // listen to port
-    app.listen(process.env.PORT, () => {
-      console.log('listening for requests on port', process.env.PORT)
+    app.listen(4000, () => {
+      console.log('listening for requests on port', 4000)
     })
   })
   .catch((err) => {
     console.log(err)
   })
-
