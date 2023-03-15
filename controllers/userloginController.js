@@ -1,9 +1,9 @@
 require("dotenv").config();
 const user = require('../models/userlogin');
 const twj = require('jsonwebtoken')
-
+const token = "jsaflfsslkjafojsjfklsj"
 const createToken = (id) => {
-    return twj.sign({ id }, "jsaflfsslkjafojsjfklsj", { expiresIn: '3d' })
+    return twj.sign({ id }, token, { expiresIn: '3d' })
 }
 
 const signup_user = async (req, res) => {
